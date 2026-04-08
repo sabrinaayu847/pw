@@ -5,10 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MedMinder</title>
 
-<!-- FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-
-<!-- ICON -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -25,7 +22,6 @@
     box-sizing: border-box;
 }
 
-/* FONT */
 body {
     font-family: 'Inter', sans-serif;
     background: var(--primary);
@@ -37,35 +33,43 @@ h1,h2,h3 {
     font-family: 'Poppins', sans-serif;
 }
 
-/* FLOATING */
+/* FLOATING UPGRADE */
 .floating i {
     position: absolute;
     color: var(--accent);
-    opacity: 0.15;
+    opacity: 0.18;
+    filter: blur(1px);
 }
 
-.floating i:nth-child(1){ top:5%; left:5%; font-size:25px; animation: float1 6s infinite;}
-.floating i:nth-child(2){ top:20%; left:15%; font-size:18px; animation: float2 7s infinite;}
-.floating i:nth-child(3){ top:40%; left:8%; font-size:22px; animation: float3 5s infinite;}
-.floating i:nth-child(4){ top:70%; left:12%; font-size:20px; animation: float2 6s infinite;}
-.floating i:nth-child(5){ top:10%; right:5%; font-size:26px; animation: float1 7s infinite;}
-.floating i:nth-child(6){ top:35%; right:10%; font-size:18px; animation: float3 5s infinite;}
-.floating i:nth-child(7){ bottom:15%; right:8%; font-size:22px; animation: float2 6s infinite;}
-.floating i:nth-child(8){ bottom:5%; left:45%; font-size:20px; animation: float1 8s infinite;}
+/* posisi + ukuran */
+.floating i:nth-child(1){ top:5%; left:5%; font-size:70px; animation: float1 8s infinite;}
+.floating i:nth-child(2){ top:20%; left:15%; font-size:50px; animation: float2 7s infinite;}
+.floating i:nth-child(3){ top:40%; left:8%; font-size:60px; animation: float3 6s infinite;}
+.floating i:nth-child(4){ top:70%; left:12%; font-size:55px; animation: float2 8s infinite;}
+.floating i:nth-child(5){ top:10%; right:5%; font-size:70px; animation: float1 7s infinite;}
+.floating i:nth-child(6){ top:35%; right:10%; font-size:50px; animation: float3 6s infinite;}
+.floating i:nth-child(7){ bottom:15%; right:8%; font-size:60px; animation: float2 7s infinite;}
+.floating i:nth-child(8){ bottom:5%; left:45%; font-size:55px; animation: float1 9s infinite;}
+.floating i:nth-child(9){ top:60%; right:30%; font-size:45px; animation: float3 6s infinite;}
+.floating i:nth-child(10){ bottom:30%; left:30%; font-size:40px; animation: float2 7s infinite;}
+.floating i:nth-child(11){ top:25%; right:40%; font-size:45px; animation: float1 8s infinite;}
+.floating i:nth-child(12){ bottom:40%; right:20%; font-size:40px; animation: float3 6s infinite;}
 
 @keyframes float1 {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes float2 {
     0% { transform: translateY(0); }
     50% { transform: translateY(-20px); }
     100% { transform: translateY(0); }
 }
-@keyframes float2 {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-12px); }
-    100% { transform: translateY(0); }
-}
+
 @keyframes float3 {
     0% { transform: translateY(0); }
-    50% { transform: translateY(-18px); }
+    50% { transform: translateY(-25px); }
     100% { transform: translateY(0); }
 }
 
@@ -86,7 +90,7 @@ header h1 {
     grid-template-columns: 1.8fr 0.8fr;
 }
 
-/* KIRI */
+/* MAIN */
 .main {
     padding: 40px;
     border-right: 2px solid var(--accent);
@@ -101,31 +105,35 @@ header h1 {
     text-align: center;
 }
 
+.member:hover {
+    transform: translateY(-5px);
+}
+
 .member img {
-    width: 70px;
-    height: 70px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     border: 2px solid var(--accent);
-    margin-bottom: 5px;
 }
 
 /* SECTION */
 .section {
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
 .section h2 {
     color: var(--accent);
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
-/* BULLET */
-.bullet p {
-    margin-bottom: 5px;
-}
-.bullet i {
-    color: var(--accent);
-    margin-right: 6px;
+/* TENTANG PARAGRAF */
+.about-text {
+    line-height: 1.6;
+    font-size: 14px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--accent);
 }
 
 /* PROJECT */
@@ -134,7 +142,6 @@ header h1 {
     padding: 20px;
     border-radius: 12px;
     border: 1.5px solid var(--accent);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* FITUR */
@@ -142,21 +149,18 @@ header h1 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    margin-top: 12px;
 }
 
 .detail {
     background: var(--secondary);
-    padding: 8px;
-    border-radius: 6px;
+    padding: 10px;
+    border-radius: 8px;
     text-align: center;
-    font-size: 13px;
 }
 
 .detail i {
     display: block;
-    margin-bottom: 4px;
-    color: var(--accent);
+    margin-bottom: 5px;
 }
 
 /* SIDEBAR */
@@ -170,11 +174,25 @@ header h1 {
 
 .side-card {
     background: rgba(255,255,255,0.7);
-    backdrop-filter: blur(6px);
     padding: 12px;
     border-radius: 10px;
     font-size: 13px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+/* TAMBAHAN SIDEBAR */
+.mini-box {
+    background: white;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--accent);
+    font-size: 13px;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    margin-top: 5px;
 }
 
 /* FOOTER */
@@ -183,13 +201,7 @@ footer {
     padding: 20px;
     text-align: center;
     background: var(--secondary);
-    font-size: 13px;
     border-top: 2px solid var(--accent);
-}
-
-footer i {
-    color: var(--accent);
-    margin: 0 5px;
 }
 
 /* RESPONSIVE */
@@ -205,99 +217,87 @@ footer i {
 
 <!-- FLOATING -->
 <div class="floating">
-    <i class="fa-solid fa-heart-pulse"></i>
-    <i class="fa-solid fa-pills"></i>
-    <i class="fa-solid fa-stethoscope"></i>
-    <i class="fa-solid fa-kit-medical"></i>
-    <i class="fa-solid fa-syringe"></i>
-    <i class="fa-solid fa-capsules"></i>
-    <i class="fa-solid fa-notes-medical"></i>
-    <i class="fa-solid fa-user-doctor"></i>
+<i class="fa-solid fa-heart-pulse"></i>
+<i class="fa-solid fa-pills"></i>
+<i class="fa-solid fa-stethoscope"></i>
+<i class="fa-solid fa-kit-medical"></i>
+<i class="fa-solid fa-syringe"></i>
+<i class="fa-solid fa-capsules"></i>
+<i class="fa-solid fa-notes-medical"></i>
+<i class="fa-solid fa-user-doctor"></i>
+<i class="fa-solid fa-heart"></i>
+<i class="fa-solid fa-briefcase-medical"></i>
+<i class="fa-solid fa-heart-pulse"></i>
+<i class="fa-solid fa-pills"></i>
 </div>
 
 <header>
-    <h1><i class="fa-solid fa-heart-pulse"></i> MedMinder</h1>
-    <p>Monitoring Kesehatan Harian</p>
+<h1><i class="fa-solid fa-heart-pulse"></i> MedMinder</h1>
+<p>Monitoring Kesehatan Harian</p>
 </header>
 
 <div class="container">
 
 <div class="main">
 
-    <!-- TEAM -->
-    <div class="team-photo">
-        <div class="member">
-            <img src="https://via.placeholder.com/100">
-            <h4>Ezrina</h4>
-            <p>Backend</p>
-        </div>
-        <div class="member">
-            <img src="https://via.placeholder.com/100">
-            <h4>Nama 2</h4>
-            <p>Frontend</p>
-        </div>
-        <div class="member">
-            <img src="https://via.placeholder.com/100">
-            <h4>Nama 3</h4>
-            <p>Database</p>
-        </div>
-        <div class="member">
-            <img src="https://via.placeholder.com/100">
-            <h4>Nama 4</h4>
-            <p>UI/UX</p>
-        </div>
-    </div>
+<div class="team-photo">
+<div class="member"><img src="https://via.placeholder.com/100"><h4>Ezrina</h4><p>Backend</p></div>
+<div class="member"><img src="https://via.placeholder.com/100"><h4>Nama 2</h4><p>Frontend</p></div>
+<div class="member"><img src="https://via.placeholder.com/100"><h4>Nama 3</h4><p>Database</p></div>
+<div class="member"><img src="https://via.placeholder.com/100"><h4>Nama 4</h4><p>UI/UX</p></div>
+</div>
 
-    <!-- TENTANG -->
-    <div class="section">
-        <h2><i class="fa-solid fa-users"></i> Tentang Kami</h2>
-        <p>Kami adalah tim mahasiswa informatika yang fokus pada pengembangan aplikasi kesehatan digital.</p>
+<div class="section">
+<h2><i class="fa-solid fa-users"></i> Tentang Kami</h2>
+<div class="about-text">
+Kami adalah tim mahasiswa informatika yang berfokus pada pengembangan aplikasi berbasis sistem untuk membantu aktivitas sehari-hari, khususnya dalam bidang kesehatan digital. Melalui proyek MedMinder, kami menghadirkan solusi yang memudahkan pengguna dalam mengatur jadwal konsumsi obat secara terstruktur, efisien, dan mudah digunakan.
+</div>
+</div>
 
-        <div class="bullet">
-            <p><i class="fa-solid fa-heart-pulse"></i> Monitoring kesehatan harian</p>
-            <p><i class="fa-solid fa-pills"></i> Manajemen konsumsi obat</p>
-            <p><i class="fa-solid fa-stethoscope"></i> Sistem terstruktur</p>
-            <p><i class="fa-solid fa-notes-medical"></i> Solusi efisien</p>
-        </div>
-    </div>
+<div class="section">
+<h2><i class="fa-solid fa-briefcase-medical"></i> Portofolio</h2>
 
-    <!-- PORTOFOLIO -->
-    <div class="section">
-        <h2><i class="fa-solid fa-briefcase-medical"></i> Portofolio</h2>
+<div class="project-main">
+<h3>MedMinder</h3>
+<p>Aplikasi monitoring obat.</p>
 
-        <div class="project-main">
-            <h3>MedMinder</h3>
-            <p>Aplikasi pengelolaan jadwal konsumsi obat.</p>
+<div class="project-detail">
+<div class="detail"><i class="fa-solid fa-barcode"></i>QR Login</div>
+<div class="detail"><i class="fa-solid fa-clock"></i>Jadwal</div>
+<div class="detail"><i class="fa-solid fa-check"></i>Tracking</div>
+<div class="detail"><i class="fa-solid fa-file-excel"></i>Export</div>
+</div>
 
-            <div class="project-detail">
-                <div class="detail"><i class="fa-solid fa-barcode"></i>QR Login</div>
-                <div class="detail"><i class="fa-solid fa-clock"></i>Jadwal</div>
-                <div class="detail"><i class="fa-solid fa-check"></i>Tracking</div>
-                <div class="detail"><i class="fa-solid fa-file-excel"></i>Export</div>
-            </div>
-        </div>
-    </div>
+</div>
+</div>
 
 </div>
 
-<!-- SIDEBAR -->
 <div class="sidebar">
-    <div class="side-card"><i class="fa-solid fa-heart"></i> Kesehatan Digital</div>
-    <div class="side-card"><i class="fa-solid fa-pills"></i> Manajemen Obat</div>
-    <div class="side-card"><i class="fa-solid fa-clock"></i> Jadwal Otomatis</div>
-    <div class="side-card"><i class="fa-solid fa-chart-line"></i> Tracking Harian</div>
-    <div class="side-card"><i class="fa-solid fa-file-excel"></i> Export Data</div>
+<div class="side-card"><i class="fa-solid fa-heart"></i> Kesehatan Digital</div>
+<div class="side-card"><i class="fa-solid fa-pills"></i> Manajemen Obat</div>
+<div class="side-card"><i class="fa-solid fa-clock"></i> Jadwal Otomatis</div>
+<div class="side-card"><i class="fa-solid fa-chart-line"></i> Tracking</div>
+<div class="side-card"><i class="fa-solid fa-file-excel"></i> Export</div>
+
+<div class="mini-box">
+<b>Project Info</b>
+<div class="stats"><span>Tim</span><span>4 Orang</span></div>
+<div class="stats"><span>Status</span><span>Aktif</span></div>
+</div>
+
+<div class="mini-box">
+<b>Kontak</b><br>
+<i class="fa-solid fa-envelope"></i> medminder@mail.com<br>
+<i class="fa-solid fa-phone"></i> 08xxxx
 </div>
 
 </div>
 
-<!-- FOOTER -->
+</div>
+
 <footer>
-    <p>
-        <i class="fa-solid fa-heart-pulse"></i>
-        MedMinder Project | Informatika 2026
-        <i class="fa-solid fa-stethoscope"></i>
-    </p>
+<i class="fa-solid fa-heart-pulse"></i> MedMinder Project | Informatika 2026
 </footer>
 
 </body>
