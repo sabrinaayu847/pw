@@ -7,6 +7,217 @@
 
     <style>
         :root {
+            --primary: #F4F6F9;   /* 60% */
+            --secondary: #DCE6F2; /* 30% */
+            --accent: #4A6CF7;    /* 10% */
+            --text: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: var(--primary);
+            color: var(--text);
+        }
+
+        header {
+            background: var(--secondary);
+            padding: 25px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* GOLDEN RATIO TEGAS */
+        .container {
+            display: grid;
+            grid-template-columns: 1.618fr 1fr;
+            height: calc(100vh - 120px);
+        }
+
+        /* KIRI */
+        .main {
+            padding: 30px;
+            background: white;
+            border-right: 3px solid var(--accent);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        .project {
+            background: var(--primary);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* KANAN (BIODATA FULL) */
+        .sidebar {
+            padding: 20px;
+            background: var(--secondary);
+            overflow-y: auto;
+        }
+
+        .member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        .member img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 10px;
+            border: 2px solid var(--accent);
+        }
+
+        .member h4 {
+            margin-bottom: 3px;
+        }
+
+        .member p {
+            font-size: 13px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: var(--secondary);
+            border-top: 2px solid var(--accent);
+        }
+
+        @media(max-width:768px){
+            .container{
+                grid-template-columns: 1fr;
+                height: auto;
+            }
+
+            .main{
+                border-right: none;
+                border-bottom: 3px solid var(--accent);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>Portfolio Tim</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Proyek</a>
+        <a href="#">Kontak</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <!-- KIRI -->
+    <div class="main">
+
+        <section>
+            <h2>Tentang Kami</h2>
+            <p>Tim mahasiswa informatika yang fokus pada pengembangan sistem dan solusi digital sederhana.</p>
+        </section>
+
+        <section>
+            <h2>Proyek</h2>
+
+            <div class="project">
+                <strong>Sistem Data</strong>
+                <p>Aplikasi pengelolaan data berbasis input pengguna.</p>
+            </div>
+
+            <div class="project">
+                <strong>Aplikasi Monitoring</strong>
+                <p>Sistem pencatatan dan pelaporan aktivitas.</p>
+            </div>
+
+        </section>
+
+    </div>
+
+    <!-- KANAN FULL BIODATA -->
+    <div class="sidebar">
+
+        <div class="member">
+            <img src="https://via.placeholder.com/60" alt="">
+            <div>
+                <h4>Nama 1</h4>
+                <p>Frontend</p>
+                <p>email1@email.com</p>
+            </div>
+        </div>
+
+        <div class="member">
+            <img src="https://via.placeholder.com/60" alt="">
+            <div>
+                <h4>Nama 2</h4>
+                <p>Backend</p>
+                <p>email2@email.com</p>
+            </div>
+        </div>
+
+        <div class="member">
+            <img src="https://via.placeholder.com/60" alt="">
+            <div>
+                <h4>Nama 3</h4>
+                <p>Database</p>
+                <p>email3@email.com</p>
+            </div>
+        </div>
+
+        <div class="member">
+            <img src="https://via.placeholder.com/60" alt="">
+            <div>
+                <h4>Nama 4</h4>
+                <p>UI/UX</p>
+                <p>email4@email.com</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Portfolio Tim</p>
+</footer>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Tim</title>
+
+    <style>
+        :root {
             /* 60% */
             --primary: #F5F7FA;
 
