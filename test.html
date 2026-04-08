@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portofolio Saya</title>
+    <title>Portfolio Tim</title>
 
     <style>
         :root {
-            /* 60% - warna utama (soft pastel) */
-            --primary: #FDE2E4;
+            /* 60% */
+            --primary: #F5F7FA;
 
-            /* 30% - warna sekunder */
-            --secondary: #CDB4DB;
+            /* 30% */
+            --secondary: #D6E4F0;
 
-            /* 10% - warna aksen */
-            --accent: #FF6B6B;
+            /* 10% */
+            --accent: #5C7AEA;
 
             --text: #333;
         }
@@ -33,82 +33,91 @@
 
         header {
             background: var(--secondary);
-            padding: 20px;
+            padding: 25px;
             text-align: center;
         }
 
         header h1 {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
 
         nav a {
-            margin: 0 10px;
+            margin: 0 12px;
             text-decoration: none;
-            color: white;
-            font-weight: bold;
+            color: #333;
+            font-weight: 600;
         }
 
-        /* Golden ratio layout */
+        /* GOLDEN RATIO */
         .container {
             display: grid;
             grid-template-columns: 1.618fr 1fr;
-            gap: 20px;
-            padding: 20px;
+            gap: 25px;
+            padding: 25px;
         }
 
         .main {
             background: white;
-            padding: 20px;
-            border-radius: 12px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
         }
 
         .sidebar {
             background: var(--secondary);
-            padding: 20px;
-            border-radius: 12px;
-            color: white;
-        }
-
-        section {
-            margin-bottom: 20px;
+            padding: 25px;
+            border-radius: 15px;
         }
 
         h2 {
+            margin-bottom: 15px;
             color: var(--accent);
-            margin-bottom: 10px;
         }
 
+        /* TEAM */
+        .team {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .card {
+            background: var(--primary);
+            padding: 15px;
+            border-radius: 12px;
+            transition: 0.3s;
+            border-left: 4px solid var(--accent);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card h3 {
+            margin-bottom: 5px;
+        }
+
+        /* PROJECT */
         .project {
             background: var(--primary);
             padding: 15px;
+            border-radius: 10px;
             margin-bottom: 10px;
-            border-left: 5px solid var(--accent);
-            border-radius: 8px;
         }
 
         footer {
             text-align: center;
             padding: 15px;
             background: var(--secondary);
-            color: white;
             margin-top: 20px;
-        }
-
-        button {
-            background: var(--accent);
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            opacity: 0.8;
         }
 
         @media(max-width: 768px) {
             .container {
+                grid-template-columns: 1fr;
+            }
+
+            .team {
                 grid-template-columns: 1fr;
             }
         }
@@ -118,59 +127,90 @@
 <body>
 
 <header>
-    <h1>Portofolio Saya</h1>
+    <h1>Portfolio Tim</h1>
+    <p>Kelompok Mahasiswa Informatika</p>
     <nav>
         <a href="#">Home</a>
-        <a href="#">Tentang</a>
+        <a href="#">Tim</a>
         <a href="#">Proyek</a>
         <a href="#">Kontak</a>
     </nav>
 </header>
 
 <div class="container">
-    
-    <!-- Main Content (Golden Ratio 1.618) -->
+
+    <!-- MAIN -->
     <div class="main">
+
         <section>
-            <h2>Tentang Saya</h2>
-            <p>Saya adalah mahasiswa Informatika yang tertarik pada pengembangan aplikasi dan desain sistem.</p>
+            <h2>Tentang Kami</h2>
+            <p>Kami adalah tim yang berfokus pada pengembangan sistem dan pemrograman dengan pendekatan terstruktur serta efisien.</p>
+        </section>
+
+        <section>
+            <h2>Anggota Tim</h2>
+            <div class="team">
+
+                <div class="card">
+                    <h3>Nama 1</h3>
+                    <p>Frontend Developer</p>
+                </div>
+
+                <div class="card">
+                    <h3>Nama 2</h3>
+                    <p>Backend Developer</p>
+                </div>
+
+                <div class="card">
+                    <h3>Nama 3</h3>
+                    <p>Database Manager</p>
+                </div>
+
+                <div class="card">
+                    <h3>Nama 4</h3>
+                    <p>UI/UX Designer</p>
+                </div>
+
+            </div>
         </section>
 
         <section>
             <h2>Proyek</h2>
 
             <div class="project">
-                <h3>MedMinder</h3>
-                <p>Aplikasi CLI Python untuk monitoring konsumsi obat berbasis QR Code.</p>
+                <h3>Sistem Manajemen Data</h3>
+                <p>Aplikasi untuk mengelola dan menyimpan data secara terstruktur dengan efisiensi tinggi.</p>
             </div>
 
             <div class="project">
-                <h3>Sistem Wishlist</h3>
-                <p>Aplikasi tracking wishlist dengan fitur barcode dan ekspor Excel.</p>
+                <h3>Aplikasi Monitoring</h3>
+                <p>Sistem pemantauan berbasis input pengguna dengan fitur pencatatan dan pelaporan.</p>
             </div>
 
         </section>
 
-        <button>Hubungi Saya</button>
     </div>
 
-    <!-- Sidebar (Golden Ratio 1) -->
+    <!-- SIDEBAR -->
     <div class="sidebar">
-        <h2>Info</h2>
-        <p><strong>Nama:</strong> Nama Kamu</p>
-        <p><strong>Email:</strong> email@email.com</p>
-        <p><strong>Skill:</strong></p>
+        <h2>Informasi</h2>
+        <p><strong>Kampus:</strong> Universitas</p>
+        <p><strong>Jurusan:</strong> Informatika</p>
+        <p><strong>Tahun:</strong> 2026</p>
+
+        <h2 style="margin-top:20px;">Keahlian</h2>
         <ul>
             <li>Python</li>
-            <li>HTML & CSS</li>
-            <li>Microsoft Office</li>
+            <li>Struktur Data</li>
+            <li>Web Dasar</li>
+            <li>Administrasi Sistem</li>
         </ul>
     </div>
 
 </div>
 
 <footer>
-    <p>© 2026 Portofolio Saya</p>
+    <p>© 2026 Portfolio Tim</p>
 </footer>
 
 </body>
