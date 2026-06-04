@@ -1,337 +1,382 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sistem Manajemen Bagasi Bandara</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Inventaris Barang Premium</title>
     <style>
-        :root{
-            --primary:#2563eb;
-            --primary-hover:#1d4ed8;
-            --danger:#ef4444;
-            --secondary:#64748b;
-            --bg:#f1f5f9;
-            --card:#ffffff;
-            --border:#cbd5e1;
-            --text:#1e293b;
+        /* Pengaturan Dasar Modern */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+        body {
+            background-color: #f8fafc; /* Latar belakang slate abu-abu super terang */
+            color: #1e293b;
+            padding: 50px 20px;
         }
 
-        body{
-            background:var(--bg);
-            color:var(--text);
-            padding:30px;
+        /* Judul Utama */
+        h1.main-title {
+            text-align: center;
+            color: #312e81; /* Indigo gelap */
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            letter-spacing: -0.5px;
         }
 
-        h1{
-            text-align:center;
-            margin-bottom:30px;
-            color:#0f172a;
+        /* Container Flexbox */
+        .container {
+            display: flex;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: flex-start;
         }
 
-        .container{
-            max-width:1300px;
-            margin:auto;
-            display:grid;
-            grid-template-columns:1fr 2fr;
-            gap:25px;
+        /* Desain Kartu Baru */
+        .card {
+            background-color: #ffffff;
+            border-radius: 12px; /* Lebih melengkung */
+            padding: 30px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -4px rgba(0, 0, 0, 0.04); /* Bayangan lebih halus */
+            border: 1px solid #f1f5f9;
         }
 
-        @media(max-width:900px){
-            .container{
-                grid-template-columns:1fr;
+        .form-section {
+            flex: 1; 
+            min-width: 320px;
+        }
+
+        .table-section {
+            flex: 2; 
+        }
+
+        /* Judul di dalam kartu */
+        .card h2 {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #0f172a;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        /* Garis dekoratif kecil di bawah judul kartu */
+        .card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #4f46e5; /* Aksen Indigo */
+            border-radius: 2px;
+        }
+
+        /* Elemen Form */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13.5px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #475569;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px; /* Lebih bulat */
+            font-size: 14px;
+            color: #1e293b;
+            background-color: #f8fafc; /* Form background sedikit abu agar kontras */
+            outline: none;
+            transition: all 0.2s ease;
+        }
+
+        /* Efek fokus input yang lebih glowing */
+        .form-group input:focus, 
+        .form-group select:focus {
+            border-color: #6366f1;
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        }
+
+        /* Grup Tombol */
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background-color: #4f46e5; /* Indigo */
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #4338ca;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #e2e8f0; 
+            color: #475569;
+        }
+
+        .btn-secondary:hover {
+            background-color: #cbd5e1;
+        }
+
+        /* Desain Tabel Modern */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        thead {
+            background-color: #f8fafc; 
+        }
+
+        th {
+            text-align: left;
+            padding: 14px 16px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #edf2f7;
+        }
+
+        td {
+            padding: 16px;
+            font-size: 14px;
+            color: #334155;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tbody tr {
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f5f9; 
+        }
+
+        /* Styling Kapsul/Badge Status */
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .badge-tersedia {
+            background-color: #dcfce7;
+            color: #15803d;
+        }
+
+        .badge-habis {
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .empty-state {
+            text-align: center;
+            color: #94a3b8;
+            padding: 40px 0;
+        }
+
+        /* Responsif Layar Kecil */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
             }
-        }
-
-        .card{
-            background:var(--card);
-            border-radius:10px;
-            padding:25px;
-            box-shadow:0 4px 10px rgba(0,0,0,0.08);
-        }
-
-        .card h2{
-            margin-bottom:20px;
-            border-bottom:2px solid #e2e8f0;
-            padding-bottom:10px;
-            color:#0f172a;
-        }
-
-        .form-group{
-            margin-bottom:18px;
-        }
-
-        .form-group label{
-            display:block;
-            margin-bottom:6px;
-            font-weight:600;
-        }
-
-        .form-control{
-            width:100%;
-            padding:10px;
-            border:1px solid var(--border);
-            border-radius:6px;
-            font-size:15px;
-        }
-
-        .form-control:focus{
-            outline:none;
-            border-color:var(--primary);
-            box-shadow:0 0 0 3px rgba(37,99,235,0.15);
-        }
-
-        .btn-group{
-            display:flex;
-            gap:10px;
-            margin-top:20px;
-        }
-
-        .btn{
-            flex:1;
-            border:none;
-            padding:10px;
-            border-radius:6px;
-            cursor:pointer;
-            font-weight:600;
-            color:white;
-            transition:0.2s;
-        }
-
-        .btn-primary{
-            background:var(--primary);
-        }
-
-        .btn-primary:hover{
-            background:var(--primary-hover);
-        }
-
-        .btn-danger{
-            background:var(--danger);
-        }
-
-        .btn-danger:hover{
-            background:#dc2626;
-        }
-
-        .btn-secondary{
-            background:var(--secondary);
-        }
-
-        .btn-secondary:hover{
-            background:#475569;
-        }
-
-        table{
-            width:100%;
-            border-collapse:collapse;
-        }
-
-        th, td{
-            padding:12px;
-            border-bottom:1px solid #e2e8f0;
-            text-align:left;
-        }
-
-        th{
-            background:#f8fafc;
-        }
-
-        tbody tr{
-            cursor:pointer;
-            transition:0.2s;
-        }
-
-        tbody tr:hover{
-            background:#e0f2fe;
-        }
-
-        tbody tr.selected{
-            background:#dbeafe;
-        }
-
-        .table-container{
-            overflow-x:auto;
+            .form-section, .table-section {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <h1>Sistem Manajemen Bagasi Bandara</h1>
+    <h1 class="main-title">Manajemen Inventaris Barang</h1>
 
     <div class="container">
-
-        <!-- FORM -->
-        <div class="card">
-            <h2>Tambah / Edit Data Bagasi</h2>
-
-            <form id="bagasiForm">
+        
+        <div class="card form-section">
+            <h2 id="form-title">Tambah / Edit Barang</h2>
+            
+            <form id="formBarang">
+                <input type="hidden" id="edit_index" value="">
 
                 <div class="form-group">
-                    <label>ID Bagasi</label>
-                    <input type="text" id="idBagasi" class="form-control" required />
+                    <label for="id_barang">ID Barang</label>
+                    <input type="text" id="id_barang" placeholder="Contoh: BRG001" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Nama Penumpang</label>
-                    <input type="text" id="namaPenumpang" class="form-control" required />
+                    <label for="nama_barang">Nama Barang</label>
+                    <input type="text" id="nama_barang" placeholder="Masukkan nama barang..." required>
                 </div>
 
                 <div class="form-group">
-                    <label>Maskapai</label>
-                    <select id="maskapai" class="form-control">
-                        <option>Garuda Indonesia</option>
-                        <option>Lion Air</option>
-                        <option>Citilink</option>
-                        <option>AirAsia</option>
-                        <option>Batik Air</option>
+                    <label for="kategori_barang">Kategori Barang</label>
+                    <input type="text" id="kategori_barang" placeholder="Contoh: Elektronik, Pakaian..." required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status_stok">Status Stok</label>
+                    <select id="status_stok">
+                        <option value="Tersedia">Tersedia</option>
+                        <option value="Habis">Habis</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label>Berat Bagasi (Kg)</label>
-                    <input type="number" id="beratBagasi" class="form-control" required />
+                <div class="button-group">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                    <button type="button" id="btnReset" class="btn btn-secondary">Reset</button>
                 </div>
-
-                <div class="form-group">
-                    <label>Status Bagasi</label>
-                    <select id="statusBagasi" class="form-control">
-                        <option>Check-in</option>
-                        <option>Dalam Proses</option>
-                        <option>Sudah Dimuat</option>
-                        <option>Terkirim</option>
-                    </select>
-                </div>
-
-                <div class="btn-group">
-                    <button type="submit" class="btn btn-primary">
-                        Simpan
-                    </button>
-
-                    <button type="button" class="btn btn-danger" id="btnHapus">
-                        Hapus
-                    </button>
-
-                    <button type="reset" class="btn btn-secondary" id="btnReset">
-                        Reset
-                    </button>
-                </div>
-
             </form>
         </div>
 
-        <!-- TABLE -->
-        <div class="card">
-            <h2>Daftar Bagasi Bandara (Klik Baris untuk Edit)</h2>
-
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID Bagasi</th>
-                            <th>Nama Penumpang</th>
-                            <th>Maskapai</th>
-                            <th>Berat</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="tableBody">
-                    </tbody>
-                </table>
-            </div>
+        <div class="card table-section">
+            <h2>Daftar Barang (Klik baris untuk Edit)</h2>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID Barang</th>
+                        <th>Nama Barang</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="tabelBarangBody">
+                    <tr>
+                        <td colspan="3" class="empty-state">Tidak ada data ditemukan.</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
     </div>
 
-<script>
-    let dataBagasi = JSON.parse(localStorage.getItem("DataBagasi")) || [];
+    <script>
+        // Menggunakan LocalStorage agar data awet tidak hilang saat di-refresh
+        let databaseBarang = JSON.parse(localStorage.getItem('gudangBarangAesthetic')) || [];
 
-    const form = document.getElementById("bagasiForm");
-    const tableBody = document.getElementById("tableBody");
-    const btnHapus = document.getElementById("btnHapus");
+        const form = document.getElementById('formBarang');
+        const tabelBody = document.getElementById('tabelBarangBody');
+        const editIndexInput = document.getElementById('edit_index');
+        const btnReset = document.getElementById('btnReset');
+        const idBarangInput = document.getElementById('id_barang');
 
-    let selectedId = null;
+        function renderTabel() {
+            tabelBody.innerHTML = ''; 
 
-    function tampilkanData() {
-        tableBody.innerHTML = "";
+            if (databaseBarang.length === 0) {
+                tabelBody.innerHTML = `
+                    <tr>
+                        <td colspan="3" class="empty-state">Tidak ada data ditemukan.</td>
+                    </tr>
+                `;
+                return;
+            }
 
-        dataBagasi.forEach((item) => {
+            databaseBarang.forEach((barang, index) => {
+                const row = document.createElement('tr');
+                row.setAttribute('onclick', `siapkanEdit(${index})`); 
+                
+                // Cek status untuk memberikan class warna badge yang sesuai
+                const badgeClass = barang.status === 'Tersedia' ? 'badge-tersedia' : 'badge-habis';
 
-            let row = `
-                <tr onclick="editData('${item.idBagasi}')">
-                    <td>${item.idBagasi}</td>
-                    <td>${item.namaPenumpang}</td>
-                    <td>${item.maskapai}</td>
-                    <td>${item.beratBagasi} Kg</td>
-                    <td>${item.statusBagasi}</td>
-                </tr>
-            `;
+                row.innerHTML = `
+                    <td><span style="color: #4f46e5; font-weight: 600;">${barang.id}</span></td>
+                    <td>${barang.nama}</td>
+                    <td><span class="badge ${badgeClass}">${barang.status}</span></td>
+                `;
+                tabelBody.appendChild(row);
+            });
+        }
 
-            tableBody.innerHTML += row;
+        function simpanKeLocalStorage() {
+            localStorage.setItem('gudangBarangAesthetic', JSON.stringify(databaseBarang));
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+
+            const id = idBarangInput.value;
+            const nama = document.getElementById('nama_barang').value;
+            const kategori = document.getElementById('kategori_barang').value;
+            const status = document.getElementById('status_stok').value;
+            const editIndex = editIndexInput.value;
+
+            const dataBaru = { id, nama, kategori, status };
+
+            if (editIndex === "") {
+                const idSama = databaseBarang.some(b => b.id.toLowerCase() === id.toLowerCase());
+                if (idSama) {
+                    alert("ID Barang ini sudah terdaftar. SIlakan gunakan ID lain!");
+                    return;
+                }
+                databaseBarang.push(dataBaru);
+            } else {
+                databaseBarang[editIndex] = dataBaru;
+                editIndexInput.value = ""; 
+                idBarangInput.removeAttribute('readonly'); 
+            }
+
+            simpanKeLocalStorage(); 
+            form.reset(); 
+            renderTabel(); 
         });
 
-        localStorage.setItem("DataBagasi", JSON.stringify(dataBagasi));
-    }
-
-    form.addEventListener("submit", function(e){
-        e.preventDefault();
-
-        const data = {
-            idBagasi: document.getElementById("idBagasi").value,
-            namaPenumpang: document.getElementById("namaPenumpang").value,
-            maskapai: document.getElementById("maskapai").value,
-            beratBagasi: document.getElementById("beratBagasi").value,
-            statusBagasi: document.getElementById("statusBagasi").value
-        };
-
-        if(selectedId){
-            const index = dataBagasi.findIndex(item => item.idBagasi === selectedId);
-            dataBagasi[index] = data;
-            selectedId = null;
-        } else {
-            dataBagasi.push(data);
+        function siapkanEdit(index) {
+            const barangTerpilih = databaseBarang[index];
+            
+            document.getElementById('id_barang').value = barangTerpilih.id;
+            document.getElementById('nama_barang').value = barangTerpilih.nama;
+            document.getElementById('kategori_barang').value = barangTerpilih.kategori;
+            document.getElementById('status_stok').value = barangTerpilih.status;
+            
+            editIndexInput.value = index; 
+            idBarangInput.setAttribute('readonly', true); 
         }
 
-        tampilkanData();
-        form.reset();
-    });
-
-    function editData(id){
-        const data = dataBagasi.find(item => item.idBagasi === id);
-
-        document.getElementById("idBagasi").value = data.idBagasi;
-        document.getElementById("namaPenumpang").value = data.namaPenumpang;
-        document.getElementById("maskapai").value = data.maskapai;
-        document.getElementById("beratBagasi").value = data.beratBagasi;
-        document.getElementById("statusBagasi").value = data.statusBagasi;
-
-        selectedId = id;
-    }
-
-    btnHapus.addEventListener("click", function(){
-
-        if(selectedId){
-            dataBagasi = dataBagasi.filter(item => item.idBagasi !== selectedId);
-
-            tampilkanData();
+        btnReset.addEventListener('click', function() {
             form.reset();
+            editIndexInput.value = "";
+            idBarangInput.removeAttribute('readonly');
+        });
 
-            selectedId = null;
-        } else {
-            alert("Pilih data terlebih dahulu!");
-        }
-    });
-
-    tampilkanData();
-</script>
-
+        renderTabel();
+    </script>
 </body>
 </html>
